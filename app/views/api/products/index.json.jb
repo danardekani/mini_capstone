@@ -1,12 +1,12 @@
-{message: "Hello"}  {  
-  id: @products.id,
-  name: @products.name,
-  price: @products.price,
-  image_url: @products.image_url,
-  description: @products.description
-}
-
-@products.map do |products|
-
+@products.map do |product|
+  {  
+  id: products.id,
+  name: products.name,
+  price: products.price,
+  image_url: products.image_url,
+  description: products.description,
+  is_discounted: products.is_discounted?,
+  total: products.total,
+  tax: products.tax
+  }
 end
-
