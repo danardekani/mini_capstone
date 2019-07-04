@@ -19,7 +19,6 @@ class Api::ProductsController < ApplicationController
     # modify
     @products.update(    
       @products.name = params[:input_name],
-      
       @products.image_url = params[:input_image_url],
       @products.description = params[:input_description],
       @products.price = params[:input_price],
