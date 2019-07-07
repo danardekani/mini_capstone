@@ -9,6 +9,9 @@ Rails.application.routes.draw do
          #website  | controller | method
     get '/product' => 'products#index'
     get '/product/:id' => 'products#show'
+    # update
     patch  '/product/:id' => 'products#update'
+    # create
+    post '/product' => 'products#create'
   end
 end

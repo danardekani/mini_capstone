@@ -14,16 +14,29 @@ class Api::ProductsController < ApplicationController
 
   def update
     # find the product in the db
-    the_id = params[id:1]
-    @products = Product.find_by(id: 1)
+    @product = Product.find_by(id: 1)
     # modify
-    @products.update(    
-      @products.name = params[:input_name],
-      @products.image_url = params[:input_image_url],
-      @products.description = params[:input_description],
-      @products.price = params[:input_price],
-      @products.name = params[:input_image_url]
+  if @products.update( name: params[:input_name],
+      image_url: params[:input_image_url],
+      description: params[:input_description],
+      price: params[:input_price],
       )
     render 'update.json.jb'
+  else
+    render 'errirs.json.jb', status: unprossible_entity
+  end
+
+  def create
+    @product = Product.new(
+      name: params[:input_name],
+      image_url: params[:input_image_url],
+      description: params[:input_description],
+      price: params[:input_price]
+      )
+    if @product.save
+      render 'show.json.jb' 
+    else 
+      render 'errors.json.jb', status: unprossible_entity
+    end 
   end
 end
