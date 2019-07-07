@@ -37,6 +37,7 @@ class Api::ProductsController < ApplicationController
       render 'show.json.jb' 
     else 
       render 'errors.json.jb', status: unprossible_entity
-    end 
+    end
   end
+end
 end
