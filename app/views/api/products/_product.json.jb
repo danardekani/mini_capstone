@@ -6,5 +6,6 @@
   description: product.description,
   is_discounted: product.is_discounted,
   total: product.total,
-  tax: product.tax
+  tax: product.tax,
+  supplier_name:product.supplier.name
 }

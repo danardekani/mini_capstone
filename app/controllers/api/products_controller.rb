@@ -1,9 +1,13 @@
 class Api::ProductsController < ApplicationController
   def index
-    # show ALL of the products
-    # get ALL the produts from the DB
-    @products = Product.all
-    render 'index.json.jb'
+    if params[:search]
+      @product = Product.where("name like ?", "%#{params[:search]}%")
+    else
+      product = Product.all 
+    end
+
+    @product = @product.order(:id => :asc)
+      render 'index.json.jb'
   end
 
   def show
@@ -16,15 +20,15 @@ class Api::ProductsController < ApplicationController
     # find the product in the db
     @product = Product.find_by(id: 1)
     # modify
-  if @products.update( name: params[:input_name],
+    if @products.update( name: params[:input_name],
       image_url: params[:input_image_url],
       description: params[:input_description],
       price: params[:input_price],
       )
-    render 'update.json.jb'
-  else
-    render 'errirs.json.jb', status: unprossible_entity
-  end
+      render 'update.json.jb'
+    else
+      render 'errirs.json.jb', status: unprossible_entity
+    end
 
   def create
     @product = Product.new(
