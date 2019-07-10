@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     patch  '/product/:id' => 'products#update'
     # create
     post '/product' => 'products#create'
+    post 'users' => 'users#create'
   end
 end 
