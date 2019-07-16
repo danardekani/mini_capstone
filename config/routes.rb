@@ -9,10 +9,14 @@ Rails.application.routes.draw do
          #website  | controller | method
     get '/product' => 'products#index'
     get '/product/:id' => 'products#show'
+    get '/order' => 'orders#index'
     # update
     patch  '/product/:id' => 'products#update'
     # create
     post '/product' => 'products#create'
     post 'users' => 'users#create'
+    post '/sessions' => 'sessions#create'
+    post '/order' => 'orders#create'
+
   end
 end 

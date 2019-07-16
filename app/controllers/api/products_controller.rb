@@ -1,14 +1,25 @@
 class Api::ProductsController < ApplicationController
-  def index
-    if params[:search]
-      @product = Product.where("name like ?", "%#{params[:search]}%")
-    else
-      product = Product.all 
-    end
 
-    @product = @product.order(:id => :asc)
-      render 'index.json.jb'
+  before_action :authenticate_admin, only: [:create, :update]
+  
+  def index
+  #   if params[:search]
+  #     @product = Product.where("name like ?", "%#{params[:search]}%")
+  #   else
+  #     product = Product.all 
+  #   end
+
+  #   @product = @product.order(:id => :asc)
+  #     render 'index.json.jb'
+  # end
+  
+  @product = Product.all
+
+  if params[:category]
+    category = Category.find_by(name: params[:category])
+    @products = cateogry.products
   end
+  
 
   def show
     the_id = params[:id]
