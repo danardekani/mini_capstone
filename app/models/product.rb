@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
-
-  has_many :orders
-  belongs_to :supplier
-  has_many :images
-  has_many :category_products
+  has_many :carted_products
+  has_many :orders, through: :carted_products 
+  # has_many :orders
+  # belongs_to :supplier
+  # has_many :images
+  # has_many :category_products
 
   validates :price, length: {in: 0..100}
   validates :name, presence: true 
