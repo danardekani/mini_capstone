@@ -21,7 +21,11 @@ Rails.application.routes.draw do
 
   end
 
+  #fullstack rails
+  post '/product' => 'products#create'
+  get '/product/new' => 'products#new'
   get '/product' => 'products#index'
   get '/product/:id' => 'products#show'
+  get '/product/edit/:id' => 'products#edit'
 
 end 
