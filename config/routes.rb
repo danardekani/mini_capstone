@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   #   get "/photos" => "photos#index"
 
      #website  | controller | method
-  get '/product' => 'products#index'
-  get '/product/:id' => 'products#show'
+  get '/products' => 'products#index'
+  get '/products/:id' => 'products#show'
   get '/order' => 'orders#index'
   patch  '/product/:id' => 'products#update'
   post '/product' => 'products#create'

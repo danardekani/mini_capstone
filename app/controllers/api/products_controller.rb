@@ -10,15 +10,18 @@ class Api::ProductsController < ApplicationController
   #   end
 
   #   @product = @product.order(:id => :asc)
-  #     render 'index.json.jb'
   # end
   
-  @product = Product.all
+    @products = Product.all
 
-  if params[:category]
-    category = Category.find_by(name: params[:category])
-    @products = cateogry.products
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = cateogry.products
+    end
+    render 'index.json.jb'
   end
+
+
   
 
   def show
@@ -40,6 +43,7 @@ class Api::ProductsController < ApplicationController
     else
       render 'errirs.json.jb', status: unprossible_entity
     end
+  end
 
   def create
     @product = Product.new(
@@ -55,4 +59,4 @@ class Api::ProductsController < ApplicationController
     end
   end
 end
-end
+
