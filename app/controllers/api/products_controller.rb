@@ -1,6 +1,6 @@
 class Api::ProductsController < ApplicationController
 
-  before_action :authenticate_admin, only: [:create, :update]
+  # before_action :authenticate_admin, only: [:create, :update]
   
   def index
   #   if params[:search]
@@ -21,9 +21,6 @@ class Api::ProductsController < ApplicationController
     render 'index.json.jb'
   end
 
-
-  
-
   def show
     the_id = params[:id]
     @product = Product.find_by(id:params[:id])
@@ -32,30 +29,30 @@ class Api::ProductsController < ApplicationController
 
   def update
     # find the product in the db
-    @product = Product.find_by(id: 1)
+    @products = Product.find_by(id: 1)
     # modify
-    if @products.update( name: params[:input_name],
-      image_url: params[:input_image_url],
-      description: params[:input_description],
-      price: params[:input_price],
+    if @products.update( name: params[:name],
+      # image_url: params[:image_url],
+      description: params[:description],
+      price: params[:price],
       )
       render 'update.json.jb'
     else
-      render 'errirs.json.jb', status: unprossible_entity
+      render 'errors.json.jb', status: unprossible_entity
     end
   end
 
   def create
     @product = Product.new(
-      name: params[:input_name],
-      image_url: params[:input_image_url],
-      description: params[:input_description],
-      price: params[:input_price]
+      name: params[:name],
+      # image_url: params[:image_url],
+      description: params[:description],
+      price: params[:price]
       )
     if @product.save
       render 'show.json.jb' 
     else 
-      render 'errors.json.jb', status: unprossible_entity
+      render 'errors.json.jb'
     end
   end
 end

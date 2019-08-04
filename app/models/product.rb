@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   has_many :carted_products
   has_many :orders, through: :carted_products 
   # has_many :orders
-  belongs_to :supplier
+  belongs_to :supplier, optional: true
   has_many :images
   has_many :category_products
 
@@ -33,5 +33,13 @@ class Product < ApplicationRecord
 
   def total
     price * tax
+  end
+
+  def image_url
+    if images.length > 0
+      images[0].url
+    else
+      "https://www.hutchinsontires.com/helpers/img/no_image.jpg"
+    end
   end
 end

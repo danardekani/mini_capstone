@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   post '/order' => 'orders#create'
   post '/carted_products' => 'carted_products#create'
- end
+  end
 
 #fullstack rails
   post '/product' => 'products#create'
