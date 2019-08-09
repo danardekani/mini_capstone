@@ -29,7 +29,7 @@ class Api::ProductsController < ApplicationController
 
   def update
     # find the product in the db
-    @products = Product.find_by(id: 1)
+    @products = Product.find_by(id: params[:id])
     # modify
     if @products.update( name: params[:name],
       # image_url: params[:image_url],
